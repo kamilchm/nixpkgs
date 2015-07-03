@@ -455,7 +455,6 @@ let
     meta = {
       description = "Command Arguments for Humans";
       homepage = "https://github.com/kennethreitz/args";
-      license = stdenv.lib.licenses.bsd;
     };
   };
 
