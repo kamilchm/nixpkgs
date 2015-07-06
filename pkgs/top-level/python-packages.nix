@@ -12403,4 +12403,29 @@ let
     };
   };
 
+  trollius = buildPythonPackage rec {
+    version = "1.0.4";
+    name = "trollius-${version}";
+    disabled = isPy34;
+
+    src = pkgs.fetchurl {
+      url = "https://pypi.python.org/packages/source/t/trollius/${name}.tar.gz";
+      md5 = "3631a464d49d0cbfd30ab2918ef2b783";
+    };
+
+    buildInputs = with self; [ mock ]
+      ++ optional isPy26 unittest2;
+
+    propagatedBuildInputs = with self; []
+      ++ optional isPy26 ordereddict
+      ++ optional (isPy26 || isPy27 || isPyPy) futures;
+
+    meta = {
+      description = "Port of the Tulip project (asyncio module, PEP 3156) on Python 2";
+      homepage = "https://bitbucket.org/enovance/trollius";
+      license = licenses.asl20;
+      maintainers = with maintainers; [ garbas ];
+    };
+  };
+
 }); in pythonPackages
