@@ -13854,6 +13854,8 @@ let
     withRuntime = config.steam.withRuntime or true;
   };
 
+  steam-runtime = callPackage ../games/steam/runtime.nix { };
+
   stuntrally = callPackage ../games/stuntrally { };
 
   superTux = callPackage ../games/super-tux { };
