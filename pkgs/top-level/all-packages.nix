@@ -5614,6 +5614,8 @@ let
 
   gradle = callPackage ../development/tools/build-managers/gradle { };
 
+  gradle25 = callPackage ../development/tools/build-managers/gradle/2.5.nix { };
+
   gperf = callPackage ../development/tools/misc/gperf { };
 
   grail = callPackage ../development/libraries/grail { };
