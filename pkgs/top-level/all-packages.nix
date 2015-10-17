@@ -12216,6 +12216,10 @@ let
 
   osmo = callPackage ../applications/office/osmo { };
 
+  otto = goPackages.otto.bin // { outputs = [ "bin" ]; };
+
+  #packer = goPackages.packer.bin // { outputs = [ "bin" ]; };
+
   pamixer = callPackage ../applications/audio/pamixer { };
 
   pan = callPackage ../applications/networking/newsreaders/pan {
@@ -12784,6 +12788,8 @@ let
     gtk = gtk3;
     vte = gnome3.vte-select-text;
    };
+
+  terraform = goPackages.terraform.bin // { outputs = [ "bin" ]; };
 
   tesseract = callPackage ../applications/graphics/tesseract { };
 
