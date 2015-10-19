@@ -12398,7 +12398,7 @@ let
   };
 
   obs-studio = callPackage ../applications/video/obs-studio {
-    pulseaudioSupport = config.pulseaudio or false;
+    pulseaudioSupport = config.pulseaudio or true;
   };
 
   ocrad = callPackage ../applications/graphics/ocrad { };
