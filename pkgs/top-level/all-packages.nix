@@ -9280,7 +9280,9 @@ let
 
   restund = callPackage ../servers/restund {};
 
-  rethinkdb = callPackage ../servers/nosql/rethinkdb { };
+  rethinkdb = callPackage ../servers/nosql/rethinkdb {
+    libtool = darwin.cctools;
+  };
 
   rippled = callPackage ../servers/rippled {
     boost = boost159;
