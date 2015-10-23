@@ -13671,6 +13671,8 @@ let
 
   chessdb = callPackage ../games/chessdb { };
 
+  cockatrice = qt5Libs.callPackage ../games/cockatrice {  };
+
   confd = goPackages.confd.bin // { outputs = [ "bin" ]; };
 
   construoBase = lowPrio (callPackage ../games/construo {
