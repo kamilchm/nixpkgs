@@ -9139,9 +9139,7 @@ let
 
   lighttpd = callPackage ../servers/http/lighttpd { };
 
-  mailman = callPackage ../servers/mail/mailman {
-    dnspython = pythonPackages.dns;
-  };
+  mailman = callPackage ../servers/mail/mailman { };
 
   mediatomb = callPackage ../servers/mediatomb {
     spidermonkey = spidermonkey_185;
