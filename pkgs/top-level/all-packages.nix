@@ -9256,7 +9256,9 @@ let
 
   #monetdb = callPackage ../servers/sql/monetdb { };
 
-  mariadb = callPackage ../servers/sql/mariadb {};
+  mariadb = callPackage ../servers/sql/mariadb {
+    inherit (darwin) cctools;
+  };
 
   mongodb = callPackage ../servers/nosql/mongodb {
     sasl = cyrus_sasl;
