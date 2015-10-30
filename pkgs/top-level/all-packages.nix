@@ -14814,7 +14814,7 @@ let
     cmake = cmake-2_8;
   };
 
-  vite = enableDebugging (callPackage ../applications/science/misc/vite { });
+  vite = callPackage ../applications/science/misc/vite { };
 
   xplanet = callPackage ../applications/science/astronomy/xplanet { };
 
