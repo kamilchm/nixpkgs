@@ -5736,6 +5736,9 @@ let
 
     propagatedBuildInputs = with self; [ argh pathtools pyyaml ];
 
+    buildInputs = stdenv.lib.optionals stdenv.isDarwin
+      [ pkgs.darwin.apple_sdk.frameworks.CoreServices pkgs.darwin.cf-private ];
+
     doCheck = false;
 
     src = pkgs.fetchurl {
@@ -11919,6 +11922,11 @@ let
       substituteInPlace setup.py \
         --replace "['pandas/src/klib', 'pandas/src']" \
                   "['pandas/src/klib', 'pandas/src', '$cpp_sdk']"
+
+      # disable clipboard tests since pbcopy/pbpaste are not open source
+      substituteInPlace pandas/io/tests/test_clipboard.py \
+        --replace pandas.util.clipboard no_such_module \
+        --replace OSError ImportError
     '';
 
     # The flag `-A 'not network'` will disable tests that use internet.
