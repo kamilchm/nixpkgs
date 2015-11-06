@@ -13225,6 +13225,10 @@ let
     inherit (lua52Packages) lpeg luaMessagePack luabitop;
   };
 
+  neovim-qt = callPackage ../applications/editors/neovim-qt {
+    qt5 = qt55;
+  };
+
   virtviewer = callPackage ../applications/virtualization/virt-viewer {
     gtkvnc = gtkvnc.override { enableGTK3 = true; };
     spice_gtk = spice_gtk.override { enableGTK3 = true; };
