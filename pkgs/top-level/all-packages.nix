@@ -11150,7 +11150,9 @@ let
     desktopName = "Conkeror";
   };
 
-  csdp = callPackage ../applications/science/math/csdp { };
+  csdp = callPackage ../applications/science/math/csdp {
+    liblapack = liblapackWithoutAtlas;
+  };
 
   cuneiform = builderDefsPackage (callPackage ../tools/graphics/cuneiform) {};
 
