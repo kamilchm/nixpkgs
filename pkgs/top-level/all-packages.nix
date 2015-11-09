@@ -10065,6 +10065,8 @@ let
 
     virtualboxGuestAdditions = callPackage ../applications/virtualization/virtualbox/guest-additions { };
 
+    x86_energy_perf_policy = callPackage ../os-specific/linux/x86_energy_perf_policy { };
+
     zfs = callPackage ../os-specific/linux/zfs {
       configFile = "kernel";
       inherit kernel spl;
