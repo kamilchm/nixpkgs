@@ -9115,6 +9115,8 @@ let
 
   freeswitch = callPackage ../servers/sip/freeswitch { };
 
+  gatling = callPackage ../servers/http/gatling { };
+
   groovebasin = callPackage ../applications/audio/groovebasin { };
 
   hbase = callPackage ../servers/hbase {};
