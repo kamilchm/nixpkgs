@@ -5435,14 +5435,9 @@ let
       md5 = "8149a70a5a5783c3cceeb69de3e07458";
     };
 
-    buildInputs = with self; with pkgs;
-      [ ];
-
     propagatedBuildInputs = with self;
       [ joblib matplotlib six scikitlearn decorator audioread samplerate ];
-
   };
-
 
   joblib = buildPythonPackage rec {
     name = "joblib-${version}";
@@ -5451,11 +5446,6 @@ let
       url = https://pypi.python.org/packages/source/j/joblib/joblib-0.9.0b4.tar.gz;
       md5 = "e0d79a085d4773c7a61cd38b4fb6dad5";
     };
-
-    buildInputs = with self; with pkgs;  [ ];
-
-    propagatedBuildInputs = with self; [ ];
-
   };
 
   samplerate = buildPythonPackage rec {
@@ -5480,7 +5470,6 @@ let
     '';
 
     doCheck = false;
-
   };
 
 
