@@ -2603,7 +2603,7 @@ in
 
   ngrep = callPackage ../tools/networking/ngrep { };
 
-  ngrok = goPackages.ngrok.bin // { outputs = [ "bin" ]; };
+  ngrok = (callPackage ../tools/networking/ngrok { }).bin;
 
   noip = callPackage ../tools/networking/noip { };
 
