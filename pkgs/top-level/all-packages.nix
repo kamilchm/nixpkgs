@@ -3316,7 +3316,7 @@ in
 
   skippy-xd = callPackage ../tools/X11/skippy-xd {};
 
-  skydns = goPackages.skydns.bin // { outputs = [ "bin" ]; };
+  skydns = (callPackage ../servers/skydns { }).bin;
 
   sipcalc = callPackage ../tools/networking/sipcalc { };
 
