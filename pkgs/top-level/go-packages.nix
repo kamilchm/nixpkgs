@@ -2536,16 +2536,6 @@ let
     };
   };
 
-  mtpfs = buildFromGitHub {
-    rev = "3ef47f91c38cf1da3e965e37debfc81738e9cd94";
-    version = "2015-08-01";
-    owner = "hanwen";
-    repo = "go-mtpfs";
-    sha256 = "1f7lcialkpkwk01f7yxw77qln291sqjkspb09mh0yacmrhl231g8";
-
-    buildInputs = [ go-fuse usb ];
-  };
-
   mux = buildFromGitHub {
     rev = "5a8a0400500543e28b2886a8c52d21a435815411";
     version = "2015-08-05";
@@ -3815,17 +3805,6 @@ let
     owner  = "opennota";
     repo   = "urlesc";
     sha256 = "0dppkmfs0hb5vcqli191x9yss5vvlx29qxjcywhdfirc89rn0sni";
-  };
-
-  usb = buildFromGitHub rec {
-    rev = "69aee4530ac705cec7c5344418d982aaf15cf0b1";
-    version = "2014-12-17";
-    owner = "hanwen";
-    repo = "usb";
-    sha256 = "01k0c2g395j65vm1w37mmrfkg6nm900khjrrizzpmx8f8yf20dky";
-
-    nativeBuildInputs = [ pkgs.pkgconfig ];
-    buildInputs = [ pkgs.libusb1 ];
   };
 
   uuid = buildFromGitHub {
