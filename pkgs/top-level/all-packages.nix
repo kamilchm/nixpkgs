@@ -9861,7 +9861,7 @@ in
     inherit (perlPackages) NetSMTP;
   };
 
-  etcd = goPackages.etcd.bin // { outputs = [ "bin" ]; };
+  etcd = callPackage ../servers/etcd { };
 
   ejabberd = callPackage ../servers/xmpp/ejabberd { };
 
