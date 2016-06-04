@@ -10252,7 +10252,7 @@ in
 
   shairport-sync = callPackage ../servers/shairport-sync { };
 
-  serfdom = goPackages.serf.bin // { outputs = [ "bin" ]; };
+  serfdom = callPackage ../servers/serf { };
 
   seyren = callPackage ../servers/monitoring/seyren { };
 
