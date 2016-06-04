@@ -16815,7 +16815,7 @@ in
 
   utf8proc = callPackage ../development/libraries/utf8proc { };
 
-  vault = go16Packages.vault.bin // { outputs = [ "bin" ]; };
+  vault = callPackage ../tools/security/vault { };
 
   vbam = callPackage ../misc/emulators/vbam {};
 
