@@ -10011,7 +10011,7 @@ in
 
   nsq = callPackage ../servers/nsq { };
 
-  oauth2_proxy = goPackages.oauth2_proxy.bin // { outputs = [ "bin" ]; };
+  oauth2_proxy = callPackage ../servers/oauth2_proxy { };
 
   openpts = callPackage ../servers/openpts { };
 
