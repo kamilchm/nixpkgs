@@ -9586,7 +9586,7 @@ in
 
   goPackages = go15Packages;
 
-  go2nix = goPackages.go2nix.bin // { outputs = [ "bin" ]; };
+  go2nix = callPackage ../development/tools/go2nix { };
 
   ### DEVELOPMENT / LISP MODULES
 
