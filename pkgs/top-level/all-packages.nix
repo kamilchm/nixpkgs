@@ -16710,7 +16710,7 @@ in
 
   sqsh = callPackage ../development/tools/sqsh { };
 
-  terraform = go16Packages.terraform.bin // { outputs = [ "bin" ]; };
+  terraform = callPackage ../applications/networking/cluster/terraform { };
 
   tetex = callPackage ../tools/typesetting/tex/tetex { libpng = libpng12; };
 
