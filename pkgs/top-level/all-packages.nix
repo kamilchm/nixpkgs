@@ -13333,6 +13333,8 @@ in
 
   gosmore = callPackage ../applications/misc/gosmore { };
 
+  gosu = callPackage ../applications/virtualization/gosu { };
+
   gpsbabel = qt5.callPackage ../applications/misc/gpsbabel { };
 
   gpscorrelate = callPackage ../applications/misc/gpscorrelate { };

@@ -1,0 +1,11 @@
+[
+  {
+    "goPackagePath": "github.com/opencontainers/runc",
+    "fetch": {
+      "type": "git",
+      "url": "https://github.com/opencontainers/runc",
+      "rev": "d1e00150320329da347de8ec830618c697c3df79",
+      "sha256": "18dhbb1d25s4cpikrari2ws3w7x92r6yxj4si64h9y177wmn6kml"
+    }
+  }
+]
