@@ -44,6 +44,13 @@ in stdenv.mkDerivation rec {
     pythonProtobuf
   ];
 
+  tarWithGzip = lib.overrideDerivation gnutar (oldAttrs: {
+    buildInputs = [ makeWrapper ];
+    postInstall = ''
+      wrapProgram $out/bin/tar --prefix PATH ":" "${gzip}/bin"
+    '';
+  });
+
   preConfigure = ''
     substituteInPlace src/Makefile.am --subst-var-by mavenRepo ${mavenRepo}
 
@@ -67,7 +74,7 @@ in stdenv.mkDerivation rec {
 
     substituteInPlace src/launcher/fetcher.cpp \
       --replace '"gzip' '"${gzip}/bin/gzip'    \
-      --replace '"tar' '"${gnutar}/bin/tar'    \
+      --replace '"tar' '"${tarWithGzip}/bin/tar'    \
       --replace '"unzip' '"${unzip}/bin/unzip'
 
     substituteInPlace src/python/cli/src/mesos/cli.py \
