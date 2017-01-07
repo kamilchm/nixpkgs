@@ -20630,7 +20630,7 @@ in {
     };
 
     buildInputs = with self; [ pytestrunner pytestcov pytest coverage ];
-    propagatedBuildInputs = with self; [ pycrypto ecdsa ];
+    propagatedBuildInputs = with self; [ cryptography ecdsa ];
 
     # We don't need this specific version
     postPatch = ''
