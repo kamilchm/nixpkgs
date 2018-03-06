@@ -1,6 +1,7 @@
 { stdenv, buildPackages
 , fetchurl, zlib, autoreconfHook264
-, noSysDirs, gold ? true, bison ? null
+, noSysDirs, gold ? !forBootstrap, bison ? null
+, forBootstrap ? false
 }:
 
 let
@@ -102,8 +103,9 @@ stdenv.mkDerivation rec {
   # TODO(@Ericson2314): Always pass "--target" and always targetPrefix.
   configurePlatforms = [ "build" "host" ] ++ stdenv.lib.optional (stdenv.targetPlatform != stdenv.hostPlatform) "target";
 
-  configureFlags = [
-    "--enable-targets=all" "--enable-64-bit-bfd"
+  configureFlags = optional (!forBootstrap) "--enable-targets=all"
+  ++ [
+    "--enable-64-bit-bfd"
     "--disable-install-libbfd"
     "--disable-shared" "--enable-static"
     "--with-system-zlib"

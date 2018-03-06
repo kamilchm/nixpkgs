@@ -34,6 +34,7 @@ in with pkgs; rec {
   };
 
   bootGCC = gcc.cc.override { enableLTO = false; };
+  bootBinutils = binutils.bintools.override { forBootstrap = true; };
 
   build =
 
@@ -150,7 +151,7 @@ in with pkgs; rec {
 
         # Copy binutils.
         for i in as ld ar ranlib nm strip readelf objdump; do
-          cp ${binutils.bintools.out}/bin/$i $out/bin
+          cp ${bootBinutils.out}/bin/$i $out/bin
         done
 
         chmod -R u+w $out
