@@ -2,6 +2,10 @@
 
 with python3Packages;
 
+let
+  pytest = python3Packages.pytest_32;
+in
+
 buildPythonPackage rec {
   pname = "mitmproxy";
   version = "3.0.4";
