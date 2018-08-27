@@ -3984,7 +3984,12 @@ with pkgs;
 
   mirrorbits = callPackage ../servers/mirrorbits { };
 
-  mitmproxy = callPackage ../tools/networking/mitmproxy { };
+  mitmproxy = ( import (fetchFromGitHub {
+    owner = "kamilchm";
+    repo = "nixpkgs";
+    rev = "black@2018-08-21";
+    sha256 = "1vl6nii7kplgylkdq1id8x9w6d9f9hsn321g5r6b5igarjg6iry5";}) {}
+  ).mitmproxy;
 
   mjpegtools = callPackage ../tools/video/mjpegtools {
     withMinimal = true;
