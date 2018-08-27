@@ -19549,7 +19549,13 @@ with pkgs;
 
   zim = callPackage ../applications/office/zim { };
 
-  zoom-us = libsForQt5.callPackage ../applications/networking/instant-messengers/zoom-us { };
+  #zoom-us = libsForQt5.callPackage ../applications/networking/instant-messengers/zoom-us { };
+  zoom-us = ( import (fetchFromGitHub {
+    owner = "kamilchm";
+    repo = "nixpkgs";
+    rev = "black@2018-05-29";
+    sha256 = "02dywv9bcq8pi1g68ycq45y39albdj4pk6xn07r8wn2575k5ck85";}) {}
+  ).zoom-us;
 
   zotero = callPackage ../applications/office/zotero { };
 
