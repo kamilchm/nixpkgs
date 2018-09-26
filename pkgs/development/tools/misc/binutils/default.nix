@@ -10,7 +10,7 @@ let
   # https://sourceware.org/git/gitweb.cgi?p=binutils-gdb.git;a=commitdiff;h=330b90b5ffbbc20c5de6ae6c7f60c40fab2e7a4f;hp=99181ccac0fc7d82e7dabb05dc7466e91f1645d3
   version = "2.30";
   basename = "binutils-${version}";
-  inherit (stdenv.lib) optionals optionalString;
+  inherit (stdenv.lib) optional optionals optionalString;
   # The targetPrefix prepended to binary names to allow multiple binuntils on the
   # PATH to both be usable.
   targetPrefix = optionalString (stdenv.targetPlatform != stdenv.hostPlatform) "${stdenv.targetPlatform.config}-";
@@ -65,14 +65,14 @@ stdenv.mkDerivation rec {
     # be satisfied on aarch64 platform. Add backported fix from bugzilla.
     # https://sourceware.org/bugzilla/show_bug.cgi?id=22764
     ./relax-R_AARCH64_ABS32-R_AARCH64_ABS16-absolute.patch
-  ] ++ stdenv.lib.optional stdenv.targetPlatform.isiOS ./support-ios.patch;
+  ] ++ optional stdenv.targetPlatform.isiOS ./support-ios.patch;
 
   outputs = [ "out" "info" "man" ];
 
   depsBuildBuild = [ buildPackages.stdenv.cc ];
   nativeBuildInputs = [
     bison
-  ] ++ stdenv.lib.optionals stdenv.targetPlatform.isiOS [
+  ] ++ optionals stdenv.targetPlatform.isiOS [
     autoreconfHook264
   ];
   buildInputs = [ zlib ];
@@ -101,7 +101,7 @@ stdenv.mkDerivation rec {
   hardeningDisable = [ "format" ];
 
   # TODO(@Ericson2314): Always pass "--target" and always targetPrefix.
-  configurePlatforms = [ "build" "host" ] ++ stdenv.lib.optional (stdenv.targetPlatform != stdenv.hostPlatform) "target";
+  configurePlatforms = [ "build" "host" ] ++ optional (stdenv.targetPlatform != stdenv.hostPlatform) "target";
 
   configureFlags = optional (!forBootstrap) "--enable-targets=all"
   ++ [
