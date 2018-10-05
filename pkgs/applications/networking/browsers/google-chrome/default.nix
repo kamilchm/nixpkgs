@@ -14,7 +14,7 @@
 , systemd
 
 # Loaded at runtime.
-, libexif
+, libexif, libappindicator-gtk3
 
 # Additional dependencies according to other distros.
 ## Ubuntu
@@ -53,7 +53,7 @@ let
     libXcursor libXext libXfixes libXrender libXScrnSaver libXcomposite libxcb
     alsaLib libXdamage libXtst libXrandr expat cups
     dbus gdk_pixbuf gcc-unwrapped.lib
-    systemd
+    systemd libappindicator-gtk3
     libexif
     liberation_ttf curl utillinux xdg_utils wget
     flac harfbuzz icu libpng opusWithCustomModes snappy speechd
