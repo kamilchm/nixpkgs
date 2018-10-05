@@ -1,5 +1,5 @@
-{ stdenv, fetchFromGitHub, pkgconfig, autoreconfHook, openssl, db48, boost, zeromq
-, zlib, miniupnpc, qtbase ? null, qttools ? null, utillinux, protobuf, qrencode, libevent
+{ stdenv, fetchurl, pkgconfig, autoreconfHook, openssl, db48, boost, zeromq
+, zlib, miniupnpc, qtbase ? null, qttools ? null, utillinux, protobuf, python3, qrencode, libevent
 , withGui }:
 
 with stdenv.lib;
@@ -7,14 +7,15 @@ stdenv.mkDerivation rec{
   name = "bitcoin" + (toString (optional (!withGui) "d")) + "-" + version;
   version = "0.17.0";
 
-  src = fetchFromGitHub {
-    owner = "bitcoin";
-    repo = "bitcoin";
-    rev = "v${version}";
-    sha256 = "03cs66bd99wni456b935kn6ckqq86bi6ixg1d7y7xdxnyclzdlm6";
+  src = fetchurl {
+    urls = [ "https://bitcoincore.org/bin/bitcoin-core-${version}/bitcoin-${version}.tar.gz"
+             "https://bitcoin.org/bin/bitcoin-core-${version}/bitcoin-${version}.tar.gz"
+           ];
+    sha256 = "0pkq28d2dj22qrxyyg9kh0whmhj7ghyabnhyqldbljv4a7l3kvwq";
   };
 
-  nativeBuildInputs = [ pkgconfig autoreconfHook ];
+  nativeBuildInputs = [ pkgconfig autoreconfHook ]
+                   ++ optionals doCheck [ python3 ];
   buildInputs = [ openssl db48 boost zlib zeromq
                   miniupnpc protobuf libevent]
                   ++ optionals stdenv.isLinux [ utillinux ]
@@ -30,9 +31,11 @@ stdenv.mkDerivation rec{
                                             "--with-qt-bindir=${qtbase.dev}/bin:${qttools.dev}/bin"
                                           ];
 
-  # Fails with "This application failed to start because it could not
-  # find or load the Qt platform plugin "minimal""
-  doCheck = false;
+  doCheck = true;
+
+  # QT_PLUGIN_PATH needs to be set when executing QT, which is needed when testing Bitcoin's GUI.
+  # See also https://github.com/NixOS/nixpkgs/issues/24256
+  checkFlags = optionals withGui [ "QT_PLUGIN_PATH=${qtbase}/lib/qt-5.${versions.minor qtbase.version}/plugins" ];
 
   enableParallelBuilding = true;
 
