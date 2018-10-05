@@ -15636,7 +15636,7 @@ with pkgs;
 
   awesome-4-0 = callPackage ../applications/window-managers/awesome {
     cairo = cairo.override { xcbSupport = true; };
-    luaPackages = luaPackages.override { inherit lua; };
+    luaPackages = lua53Packages;
   };
   awesome = awesome-4-0;
 
