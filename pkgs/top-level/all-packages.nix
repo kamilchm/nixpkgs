@@ -1284,6 +1284,8 @@ with pkgs;
 
   envconsul = callPackage ../tools/system/envconsul { };
 
+  envsubst = callPackage ../tools/misc/envsubst { };
+
   eschalot = callPackage ../tools/security/eschalot { };
 
   esptool = callPackage ../tools/misc/esptool { };
@@ -17382,6 +17384,8 @@ with pkgs;
 
   kubecfg = callPackage ../applications/networking/cluster/kubecfg { };
 
+  kubeval = callPackage ../applications/networking/cluster/kubeval { };
+
   kubernetes = callPackage ../applications/networking/cluster/kubernetes {  };
 
   kubectl = (kubernetes.override { components = [ "cmd/kubectl" ]; }).overrideAttrs(oldAttrs: {
@@ -17516,6 +17520,8 @@ with pkgs;
   loxodo = callPackage ../applications/misc/loxodo { };
 
   lrzsz = callPackage ../tools/misc/lrzsz { };
+
+  lsp-plugins = callPackage ../applications/audio/lsp-plugins { };
 
   luminanceHDR = libsForQt5.callPackage ../applications/graphics/luminance-hdr { };
 
