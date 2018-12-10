@@ -4213,7 +4213,12 @@ in
 
   mirrorbits = callPackage ../servers/mirrorbits { };
 
-  mitmproxy = callPackage ../tools/networking/mitmproxy { };
+  mitmproxy = ( import (fetchFromGitHub {
+    owner = "kamilchm";
+    repo = "nixpkgs";
+    rev = "black_2018-11-19";
+    sha256 = "0anmvr6b47gbbyl9v2fn86mfkcwgpbd5lf0yf3drgm8pbv57c1dc";}) {}
+  ).mitmproxy;
 
   mjpegtools = callPackage ../tools/video/mjpegtools {
     withMinimal = true;
