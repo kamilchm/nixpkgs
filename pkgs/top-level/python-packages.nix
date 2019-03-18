@@ -1326,7 +1326,10 @@ in {
 
 
   cairocffi = let
-    inherit (callPackage ../development/python-modules/cairocffi {}) cairocffi_1_0 cairocffi_0_9;
+    inherit (callPackage ../development/python-modules/cairocffi { }) cairocffi_1_0 cairocffi_0_9;
+  in if isPy3k then cairocffi_1_0 else cairocffi_0_9;
+  cairocffi-xcffib = let
+    inherit (callPackage ../development/python-modules/cairocffi { withXcffib = true; }) cairocffi_1_0 cairocffi_0_9;
   in if isPy3k then cairocffi_1_0 else cairocffi_0_9;
 
   cairosvg = if isPy3k then

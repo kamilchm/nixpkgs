@@ -1,9 +1,9 @@
 { stdenv, fetchFromGitHub, python37Packages, glib, cairo, pango, pkgconfig, libxcb, xcbutilcursor }:
 
-let cairocffi-xcffib = python37Packages.cairocffi.override {
-    withXcffib = true;
-  };
-in
+#let cairocffi-xcffib = python37Packages.cairocffi.override {
+#    withXcffib = true;
+#  };
+#in
 
 python37Packages.buildPythonApplication rec {
   name = "qtile-${version}";
