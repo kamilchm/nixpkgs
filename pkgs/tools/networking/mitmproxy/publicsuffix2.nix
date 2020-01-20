@@ -1,8 +1,10 @@
-{ stdenv, buildPythonPackage, fetchPypi }:
+{ stdenv, buildPythonPackage, fetchPypi, python3Packages }:
 
 buildPythonPackage rec {
   pname = "publicsuffix2";
   version = "2.20191221";
+
+  checkInputs = [ python3Packages.requests ];
 
   src = fetchPypi {
     inherit pname version;
