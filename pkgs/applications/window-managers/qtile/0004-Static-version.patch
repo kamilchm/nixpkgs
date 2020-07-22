@@ -1,0 +1,45 @@
+diff --git a/setup.cfg b/setup.cfg
+index 9616a9ce..e61ed03b 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -41,7 +41,6 @@ setup_requires =
+   cffi >= 1.1.0
+   cairocffi[xcb] >= 0.9.0
+   setuptools >= 40.5.0
+-  setuptools_scm >= 3.2.0
+ install_requires =
+   cffi >= 1.1.0
+   cairocffi[xcb] >= 0.9.0
+diff --git a/setup.py b/setup.py
+index 12c7735f..dd410aae 100755
+--- a/setup.py
++++ b/setup.py
+@@ -90,7 +90,6 @@ def get_cffi_modules():
+ 
+ setup(
+     cmdclass={'install': CheckCairoXcb},
+-    use_scm_version=True,
+     cffi_modules=get_cffi_modules(),
+     install_requires=["cffi>=1.0.0"],
+ )
+diff --git a/docs/conf.py b/docs/conf.py
+index d394989d..1de3a3b9 100644
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -12,7 +12,6 @@
+ # serve to show the default.
+ 
+ import os
+-import setuptools_scm
+ import sys
+ from unittest.mock import MagicMock
+ 
+@@ -98,7 +97,7 @@ copyright = u'2008-2020, Aldo Cortesi and contributers'
+ # built documents.
+ #
+ # The short X.Y version.
+-version = setuptools_scm.get_version(root="..")
++version = @version@
+ # The full version, including alpha/beta/rc tags.
+ release = version
+ 

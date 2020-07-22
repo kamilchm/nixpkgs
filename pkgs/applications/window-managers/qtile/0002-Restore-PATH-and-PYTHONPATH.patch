@@ -20,6 +20,17 @@ index 3e82814d..335b5cea 100755
 +    __import__("importlib").import_module("libqtile.utils").restore_os_environment()
      from libqtile.scripts import qtile
      qtile.main()
+diff --git a/bin/qtile-cmd b/bin/qtile-cmd
+index a2136ee6..3d37a6d9 100755
+--- a/bin/qtile-cmd
++++ b/bin/qtile-cmd
+@@ -8,5 +8,6 @@ base_dir = os.path.abspath(os.path.join(this_dir, ".."))
+ sys.path.insert(0, base_dir)
+ 
+ if __name__ == '__main__':
++    __import__("importlib").import_module("libqtile.utils").restore_os_environment()
+     from libqtile.scripts import qtile_cmd
+     qtile_cmd.main()
 diff --git a/bin/qtile-run b/bin/qtile-run
 index e4b121be..1c203bc9 100755
 --- a/bin/qtile-run
@@ -43,13 +54,13 @@ index 5316e0e7..272c6430 100755
      from libqtile.scripts import qtile_top
      qtile_top.main()
 diff --git a/libqtile/utils.py b/libqtile/utils.py
-index 550ed02677e..1358a66f3df 100644
+index 2628c898..b07ba2fd 100644
 --- a/libqtile/utils.py
 +++ b/libqtile/utils.py
-@@ -272,3 +272,11 @@ def safe_import(module_names, class_name, globals_, fallback=None):
-         logger.debug("%s", traceback.format_exc())
-         if fallback:
-             globals_[class_name] = fallback(module_path, class_name, error)
+@@ -270,3 +270,11 @@ def guess_terminal():
+         return terminal
+ 
+     logger.error('Default terminal has not been found.')
 +
 +
 +def restore_os_environment():
