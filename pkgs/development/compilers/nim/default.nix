@@ -137,7 +137,7 @@ in {
 
   nimble-unwrapped = stdenv.mkDerivation rec {
     pname = "nimble-unwrapped";
-    version = "0.13.1";
+    version = "0.14.0";
     strictDeps = true;
 
     src = fetchFromGitHub {
